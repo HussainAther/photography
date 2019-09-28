@@ -4,6 +4,9 @@ from scipy import misc
 """
 Filtering methods.
 """
+face = misc.face(gray=True)
+f = misc.face(gray=True)
+f = f[230:290, 220:320]
 
 # Gaussian filter
 face = misc.face(gray=True)
@@ -21,3 +24,5 @@ blurred_f = ndimage.gaussian_filter(face, 3)
 filter_blurred_f = ndimage.gaussian_filter(blurred_f, 1)
 alpha = 30
 sharpened = blurred_f + alpha * (blurred_f - filter_blurred_f)
+
+noisy = f + 0.4 * f.std() * np.random.random(f.shape)
