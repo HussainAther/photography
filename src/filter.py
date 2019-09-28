@@ -42,3 +42,9 @@ el = ndimage.generate_binary_structure(2, 1)
 
 # Erosion
 a = np.zeros((7,7), dtype=np.int)
+ndimage.binary_erosion(a).astype(a.dtype)
+ndimage.binary_erosion(a, structure=np.ones((5,5))).astype(a.dtype)
+
+# Dilation
+ndimage.binary_dilation(a).astype(a.dtype)
+
