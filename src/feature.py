@@ -31,3 +31,7 @@ img = mask + 0.2*np.random.randn(*mask.shape)
 hist, bin_edges = np.histogram(img, bins=60)
 bin_centers = 0.5*(bin_edges[:-1] + bin_edges[1:])
 binary_img = img > 0.5
+# Remove small white regions
+open_img = ndimage.binary_opening(binary_img)
+# Remove small black hole
+close_img = ndimage.binary_closing(open_img)
