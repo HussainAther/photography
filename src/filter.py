@@ -25,4 +25,12 @@ filter_blurred_f = ndimage.gaussian_filter(blurred_f, 1)
 alpha = 30
 sharpened = blurred_f + alpha * (blurred_f - filter_blurred_f)
 
+# Denoise
 noisy = f + 0.4 * f.std() * np.random.random(f.shape)
+gauss_denoised = ndimage.gaussian_filter(noisy, 2)
+med_denoised = ndimage.median_filter(noisy, 3)
+im = np.zeros((20, 20))
+im[5:-5, 5:-5] = 1
+im = ndimage.distance_transform_bf(im)
+im_noise = im + 0.2 * np.random.randn(*im.shape)
+im_med = ndimage.median_filter(im_noise, 3)
