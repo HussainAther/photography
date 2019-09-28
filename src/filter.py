@@ -48,3 +48,15 @@ ndimage.binary_erosion(a, structure=np.ones((5,5))).astype(a.dtype)
 # Dilation
 ndimage.binary_dilation(a).astype(a.dtype)
 
+# Opening
+ndimage.binary_opening(a, structure=np.ones((3,3))).astype(np.int)
+
+# Application
+square = np.zeros((32, 32))
+square[10:-10, 10:-10] = 1
+np.random.seed(2)
+x, y = (32*np.random.random((2, 20))).astype(np.int)
+square[x, y] = 1
+open_square = ndimage.binary_opening(square)
+eroded_square = ndimage.binary_erosion(square)
+reconstruction = ndimage.binary_propagation(eroded_square, mask=square)
