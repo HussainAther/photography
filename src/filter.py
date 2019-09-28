@@ -1,3 +1,5 @@
+import numpy as np
+
 from scipy import ndimage
 from scipy import misc
 
@@ -35,6 +37,8 @@ im = ndimage.distance_transform_bf(im)
 im_noise = im + 0.2 * np.random.randn(*im.shape)
 im_med = ndimage.median_filter(im_noise, 3)
 
-# Structure an element.
+# Structure an element
 el = ndimage.generate_binary_structure(2, 1)
 
+# Erosion
+a = np.zeros((7,7), dtype=np.int)
