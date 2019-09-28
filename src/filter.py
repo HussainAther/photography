@@ -1,7 +1,6 @@
 import numpy as np
 
-from scipy import ndimage
-from scipy import misc
+from scipy import misc, ndimage
 
 """
 Filtering methods.
