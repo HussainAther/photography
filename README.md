@@ -1,3 +1,3 @@
 # Computational Photography
 
-Lol.
+Programming resources for photography.
