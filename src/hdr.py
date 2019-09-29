@@ -22,3 +22,9 @@ alignMTB.process(images, images)
 # Obtain Camera Response Function (CRF)
 calibrateDebevec = cv2.createCalibrateDebevec()
 responseDebevec = calibrateDebevec.process(images, times)
+
+# Merge images into an HDR linear image
+mergeDebevec = cv2.createMergeDebevec()
+hdrDebevec = mergeDebevec.process(images, times, responseDebevec)
+# Save HDR image.
+cv2.imwrite("hdrDebevec.hdr", hdrDebevec)
