@@ -18,3 +18,7 @@ def readImagesAndTimes():
 # Align input images
 alignMTB = cv2.createAlignMTB()
 alignMTB.process(images, images)
+
+# Obtain Camera Response Function (CRF)
+calibrateDebevec = cv2.createCalibrateDebevec()
+responseDebevec = calibrateDebevec.process(images, times)
