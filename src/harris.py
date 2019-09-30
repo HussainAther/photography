@@ -18,3 +18,7 @@ h_response = cv2.cornerHarris(img_gray, 2, 3, 0.04)
 h_min, h_max, _, _ = cv2.minMaxLoc(h_response)  # for thresholding, display scaling
 #print "Harris response: [min, max] = [{}, {}]".format(h_min, h_max)  # [debug]
 cv2.imshow("Harris response", np.uint8((h_response - h_min) * (255.0 / (h_max - h_min))))
+
+# Select corner pixels above threshold
+h_thresh = 0.01 * h_max
+_, h_selected = cv2.threshold(h_response, h_thresh, 1, cv2.THRESH_TOZERO)
