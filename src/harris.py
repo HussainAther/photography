@@ -1,0 +1,3 @@
+"""
+Harris corner detection.
+"""
