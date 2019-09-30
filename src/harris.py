@@ -22,3 +22,7 @@ cv2.imshow("Harris response", np.uint8((h_response - h_min) * (255.0 / (h_max - 
 # Select corner pixels above threshold
 h_thresh = 0.01 * h_max
 _, h_selected = cv2.threshold(h_response, h_thresh, 1, cv2.THRESH_TOZERO)
+
+# Pick corner pixels that are local maxima
+img_out = img.copy()
+img_out[h_selected > 0] = (0, 0, 255)  # mark pixels above threshold
